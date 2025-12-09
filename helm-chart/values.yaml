@@ -1,10 +1,11 @@
 image:
-  repository: edkee123/my-flask-app
-  tag: "latest"
-  pullPolicy: Always
+  repository: demo       # must match the Docker image you built in Minikube
+  tag: latest
+  pullPolicy: IfNotPresent  # use local image if available
 
 service:
-  type: ClusterIP
+  type: NodePort         # allows minikube to expose the service
   port: 5000
+  nodePort: 30080        # optional: fixed NodePort
 
-resource: {}
+resources: {}            # leave empty unless you want to limit CPU/memory

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "jenkins-py-demo.fullname" . }}
+spec:
+  selector:
+    app: jenkins-py-demo
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: 5000
+  type: {{ .Values.service.type }}
+  {{- if .Values.service.nodePort }}
+  nodePort: {{ .Values.service.nodePort }}
+  {{- end }}

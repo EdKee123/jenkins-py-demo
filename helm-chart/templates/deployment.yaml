@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jenkins-py-demo.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-py-demo
+  template:
+    metadata:
+      labels:
+        app: jenkins-py-demo
+    spec:
+      containers:
+        - name: jenkins-py-demo
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 5000
