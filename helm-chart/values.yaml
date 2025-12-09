@@ -1,0 +1,10 @@
+image:
+  repository: edkee123/my-flask-app
+  tag: "latest"
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 5000
+
+resource: {}
